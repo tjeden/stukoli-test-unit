@@ -35,7 +35,10 @@
 
 ## Alternatywy (4?):##
 
-* Rspec 
+* Rspec  
+* Shoulda
+* Minitest
+* Bacon, Coulda i inne
 
 !SLIDE incremental
 
