@@ -1,5 +1,10 @@
 [
   { "section": "cover" },
   { "section": "about" },
-  { "section": "story" }
+  { "section": "theory" },
+  { "section": "tdd" },
+  { "section": "story" },
+  { "section": "tdd" },
+  { "section": "assertions" },
+  { "section": "fin" }
 ]
