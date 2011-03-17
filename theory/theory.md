@@ -4,6 +4,16 @@
 * Kto wie co to jest TDD?
 * Kto z was programował z użyciem TDD?
 
+!SLIDE incremental 
+
+## Będzie o: ##
+
+* Testowaniu jednostkowym
+* Technice TDD
+* Bibliotece Test/Unit
+* (62 slajdy)
+* (oraz trochę programowania)
+
 !SLIDE incremental center
 
 ## "Dobry programista, wie czy napisał dobry kod. ##
