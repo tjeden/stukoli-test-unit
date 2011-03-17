@@ -80,6 +80,12 @@ VII. Test Driven Development
 
     end
 
+!SLIDE
+
+### Wywołanie ###
+
+    ruby test/test_average.rb
+
 !SLIDE 
 
 ### Rezultat ###
@@ -275,12 +281,255 @@ VII. Test Driven Development
       end
 
     end
+
 !SLIDE
+
+### Rezultat ###
+
+    Loaded suite test/test_average
+    Started
+    ..
+    Finished in 0.000383 seconds.
+
+    2 tests, 3 assertions, 0 failures, 0 errors
+
 !SLIDE
-## [http://rubyeventmachine.com/](http://rubyeventmachine.com/) ##
+
+### Refactoring? ###
+
+    @@@Ruby
+    class Array
+
+      def average
+        sum = 0
+        count = 0
+        each do |element|
+          sum += element
+          count += 1
+        end
+        sum.to_f/count if count != 0
+      end
+
+    end
+
+    class Array
+
+      def average
+        sum = 0
+        each do |element|
+          sum += element
+        end
+        sum.to_f/size unless size == 0
+      end
+
+    end
+
+!SLIDE
+
+### Rezultat ###
+
+    Loaded suite test/test_average
+    Started
+    ..
+    Finished in 0.000383 seconds.
+
+    2 tests, 3 assertions, 0 failures, 0 errors
+
+!SLIDE
+
+### Czy można to jeszcze skrócić? ###
+
+    @@@Ruby
+    class Array
+
+      def average
+        sum = 0
+        each do |element|
+          sum += element
+        end
+        sum.to_f/size unless size == 0
+      end
+
+    end
+
+!SLIDE
+
+### Czy można to jeszcze skrócić? ###
+
+    @@@Ruby
+    class Array
+
+      def average
+        inject{ |sum, element| sum + element }.to_f / size unless size == 0
+      end
+
+    end
+
+!SLIDE
+
+### Rezultat ###
+
+    Loaded suite test/test_average
+    Started
+    ..
+    Finished in 0.000383 seconds.
+
+    2 tests, 3 assertions, 0 failures, 0 errors
+
+!SLIDE
+
+### Jeszcze bardziej? ###
+
+    @@@Ruby
+    class Array
+
+      def average
+        inject{ |sum, element| sum + element }.to_f / size unless size == 0
+      end
+
+    end
+
+!SLIDE
+
+### Jeszcze bardziej? ###
+    @@@Ruby
+    class Array
+
+      def average
+        inject(:+).to_f / size unless size == 0
+      end
+
+    end
+
+!SLIDE
+
+### Rezultat ###
+
+    Loaded suite test/test_average
+    Started
+    ..
+    Finished in 0.000312 seconds.
+
+    2 tests, 3 assertions, 0 failures, 0 errors
+
+!SLIDE incremental bullets center
+
+# TDD #
+
+* Najpierw napisz test, który nie przejdzie
+* Napisz kod, który przechodzi test
+* Zrefaktoryzuj kod
+
+!SLIDE
+
+### Struktura testów ###
+
+    @@@Ruby
+    require 'lib/average'
+    require 'test/unit'
+
+    class TestAverage < Test::Unit::TestCase
+
+      def test_simple
+        assert_equal 4.5, [4,5].average 
+        assert_equal 3, [2,2,3,5].average 
+      end
+
+      def test_empty_array
+        assert_nil [].average
+      end
+
+      def helper_metod
+        #never goes here
+      end
+
+    end
+
+!SLIDE
+
+### Asercje ##
+
+    @@@Ruby
+    assert
+    assert_nil
+    assert_not_nil
+
+    assert_not_equal
+    assert_equal
+    assert_in_delta
+
+    assert_nothing_raised
+    assert_raise
+    assert_instance_of
+    assert_kind_of
+    assert_respond_to
+
+    assert_no_math
+    assert_match
+    assert_same
+    assert_not_same
+
+    assert_operator
+    assert_throws
+    assert_send
+
+    flunk
+
+!SLIDE
+
+### Asercje ###
+
+    @@@Ruby
+    assert 2 > 0           #=> true 
+    assert 0 > 2           #=> false
+
+    assert_nil nil         #=> true
+    assert_nil Cat.new     #=> false
+    assert_not_nil Cat.new #=> true
+
+!SLIDE
+
+### Asercje ###
+
+    @@@Ruby
+    assert_not_equal(5, 3)     #=> true
+    assert_equal(5, 3)         #=> false
+
+    assert_in_delta(5, 4, 0.5) #=> false
+    assert_in_delta(5, 4, 2.5) #=> true
+
+!SLIDE
+
+### Asercje ###
+
+    @@@Ruby
+    assert_nothing_raised Array.new #=> true
+    assert_raise Array.ugabuga      #=> true
+
+    a = Array.new
+
+    assert_instance_of(Array, a)    #=> true
+    assert_kind_of(Object, a)   #=> true
+    assert_kind_of(Cat, a)          #=> false
+
+!SLIDE
+
+### Asercje ###
+    assert_respond_to
+
+    assert_no_math
+    assert_match
+
+    assert_same
+    assert_not_same
+
+    assert_operator
+
+    assert_throws
+
+    assert_send
+
+    flunk
+!SLIDE
 
 ## [https://github.com/tjeden/topserver](https://github.com/tjeden/topserver) ##
-
-### [http://rubylearning.com/blog/2010/10/01/an-introduction-to-eventmachine-and-how-to-avoid-callback-spaghetti/](http://rubylearning.com/blog/2010/10/01/an-introduction-to-eventmachine-and-how-to-avoid-callback-spaghetti/) ###
-
-### [http://timetobleed.com/eventmachine-scalable-non-blocking-io-in-ruby/](http://timetobleed.com/eventmachine-scalable-non-blocking-io-in-ruby/) ###
