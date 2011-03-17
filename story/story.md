@@ -1,224 +1,282 @@
 !SLIDE incremental center
 
-## Platforma do obliczeń rozproszonych z wykorzystaniem akceleratorów sprzętowych ##
-* ## ..to proste ##
-* ## tylko ##
- 
-!SLIDE center incremental 
+* Kto z was pisał kiedyś testy?
+* Kto wie co to jest TDD?
+* Kto z was programował z użyciem TDD?
 
-## Co to są akceleratory sprzętowe? ##
+!SLIDE incremental center
 
-!SLIDE center incremental
+## "Dobry programista, wie czy napisał dobry kod. ##
+## Po co pisać testy?" ##
 
-## To np. takie płytki ##
+!SLIDE center
 
-![Akcelerator](akcelerator.jpg)
+I. Ruby to język interpretowany
 
-* ### a właściwie układy ###
+!SLIDE center
 
-!SLIDE bullets incremental
+II. Nikt nie jest idealny
 
-## Plan: ##
+!SLIDE center
 
-* 1.Połączmy je w równoległą sieć 
+III. Szybkie wyłapywanie błędów
 
-* 2.Podzielmy obliczenia 
+!SLIDE center
 
-* 3.???? 
+IV. Pamięć jest zawodna
 
-* 4.PROFIT!!! 
+!SLIDE center
 
-!SLIDE full-page
+V. Łatwy refaktoring i zmiany
 
-![Schemat](schemat.png)
+!SLIDE center
 
-!SLIDE full-page
+VI. Lepszy design kodu
 
-![Komunikacja](komunikacja.png)
+!SLIDE center
 
-!SLIDE full-page
+VII. Test Driven Development
 
-![Komunikacja](komunikacja2.png)
+!SLIDE incremental bullets center
 
-!SLIDE full-page
+# TDD #
 
-![Sinatra](frank_sinatra.jpg)
+* Najpierw napisz test, który nie przejdzie
+* Napisz kod, który przechodzi test
+* Zrefaktoryzuj kod
+
+!SLIDE
+
+## Czym są testy? ##
+
+    @@@Ruby
+    require 'average'
+
+    fail 'oczekiwane 4.5' if [4,5].average != 4.5
+    fail 'oczekiwane 3' if [2,2,3,5].average != 3
+    
+!SLIDE incremental
+
+## Co daje Test::Unit? ##
+
+* Pozwala opisywać testy
+* Pozwala tworzyć struktury testów
+* Dostarcza spsobów wywoływania testów
 
 !SLIDE 
 
-## Inicjalizacja ##
+### Przygotowujemy test ###
 
-    @@@ Ruby
-    EventMachine.run {
-      EM.start_server 127.0.0.1, 6969, Listener 
-    }
+    @@@Ruby
+    require 'lib/average'
+    require 'test/unit'
 
-!SLIDE 
+    class TestAverage < Test::Unit::TestCase
 
-## Listener ##
-
-    @@@ Ruby
-    class Listener < EM::Connection
-
-      def post_init; end
-
-      def receive_data(data)
-        send_data "OK"
+      def test_simple
+        assert_equal '4,5', [4,5].average 
+        assert_equal '3', [2,2,3,5].average 
       end
 
-      def unbind; end
+    end
+
+!SLIDE 
+
+### Rezultat ###
+
+    Loaded suite test/test_average
+    Started
+    E
+    Finished in 0.000278 seconds.
+
+      1) Error:
+    test_simple(TestAverage):
+    NoMethodError: undefined method `average' for [4, 5]:Array
+        test/test_average.rb:5:in `test_simple'
+
+    1 tests, 0 assertions, 0 failures, 1 errors
+
+!SLIDE
+
+### Dodanie metody average ###
+
+    @@@Ruby
+    class Array
+
+      def average;
+      end
+
     end
 
 !SLIDE
 
-## Serwer ##
+### Rezultat ###
 
-    @@@ Ruby 
-    class Server
-      def parse(data)
-        ...
-      end
-    end
+    Loaded suite test/test_average
+    Started
+    F
+    Finished in 0.024466 seconds.
+
+      1) Failure:
+    test_simple(TestAverage) [test/test_average.rb:6]:
+    <"4,5"> expected but was
+    <nil>.
+
+    1 tests, 1 assertions, 1 failures, 0 errors
+
 
 !SLIDE
 
-## Listener ##
+### Implementacja średniej (poprawna?)###
 
-    @@@ Ruby
-    class Listener < EM::Connection
+    @@@Ruby
+    class Array
 
-      attr_accessor :server
-
-      def post_init; end
-
-      def receive_data(data)
-        if @server.parse(data)
-          send_data "OK"
-        else
-          send_data "ERROR"
+      def average
+        sum = 0
+        count = 0
+        self.each do |element|
+          sum += element
+          count += 1
         end
+        sum/count
       end
 
-      def unbind; end
     end
-
-!SLIDE smaller
-
-    @@@ Ruby
-    EventMachine.run {
-      EM.start_server 127.0.0.1, 6969, Listener do |listener|
-        listener.server = server
-      end
-    }
-
-
-!SLIDE full-page
-
-![xkcd](xkcd.png)
 
 !SLIDE 
 
-## Event-driven I/O using the reactor pattern ##
+### Rezultat ###
 
-!SLIDE  bullets incremental
+    Loaded suite test/test_average
+    Started
+    F
+    Finished in 0.004176 seconds.
 
-## Co to jest reaktor? ##
+    1) Failure:
+    test_simple(TestAverage) [test/test_average.rb:7]:
+    <"4,5"> expected but was
+    <4>.
 
-    @@@ Ruby
-    while reactor_running?
-      do_something
+!SLIDE
+
+### Uwzględnienie poprawki ###
+
+    @@@Ruby
+    class Array
+
+      def average
+        sum = 0
+        count = 0
+        self.each do |element|
+          sum += element
+          count += 1
+        end
+        sum.to_f/count
+      end
+
     end
-    
-* Kod *Reaguje* na nadchodzące zdarzenia 
 
 !SLIDE
 
-## Najprostszy przykład ##
+### Rezultat ###
 
-    @@@ Ruby
-    require 'rubygems'
-    require 'eventmachine'
+    Loaded suite test/test_average
+    Started
+    F
+    Finished in 0.004232 seconds.
 
-    EventMachine.run {
-      EventMachine.add_periodic_timer(1) {
-        puts "Hello world"
-      }
-    }
-    
+    1) Failure:
+    test_simple(TestAverage) [test/test_average.rb:7]:
+    <"4,5"> expected but was
+    <4.5>.
+
+    1 tests, 1 assertions, 1 failures, 0 errors
+
 !SLIDE
 
-## Jak działa reaktor? ##
+### Test jest do poprawienia ###
 
-    @@@ Ruby
-    EM.run {
-      puts 'No i wystartowali'
-    }
-    
-    puts 'To się nie wydarzy'
-    
-!SLIDE
+    @@@Ruby
+    require 'lib/average'
+    require 'test/unit'
 
-## Jak go powstrzymać? ##
+    class TestAverage < Test::Unit::TestCase
 
-    @@@ Ruby
-    EM.run {
-      puts 'No i wystartowali'
-      EM.stop
-    }
-
-    puts 'To się wydarzy'
-    
-!SLIDE
-
-    @@@ Ruby
-    EventMachine.run {
-      server = Server.new
-      server.log "Top server started" 
-      EM::PeriodicTimer.new(0.25) do
-        server.send_tasks_to_clients
-      end
-      EM::PeriodicTimer.new(1) do
-        server.check_timeouts
-      end
-      EM::PeriodicTimer.new(2) do
-        server.close_tasks
-      end
-      EM.start_server opts[:ip], opts[:port], Listener do |listener|
-        listener.server = server
-      end
-    }
-    
-!SLIDE smaller
-
-## Klient ##
-
-    @@@ Ruby
-    class Registerer < EM::Connection
-      attr_accessor :ip, :port
-
-      def initialize(ip, port)
-        @ip = ip
-        @port = port
+      def test_simple
+        assert_equal 4.5, [4,5].average 
+        assert_equal 3, [2,2,3,5].average 
       end
 
-      def post_init
-        send_data "REGISTER #{@ip} #{@port} foo"
-      end
-
-      def receive_data(data)
-        puts "Registered with number: #{data}"
-        close_connection
-        EM.start_server(@ip, @port, ClientListener, data)
-      end
     end
-    
-    EM.run{
-      puts 'Registering client on server'
-      EM.connect('0.0.0.0', 5555, Registerer, opts[:ip], opts[:port]) 
-    }
-    
+
 !SLIDE
 
+### Rezultat ###
+
+    Loaded suite test/test_average
+    Started
+    .
+    Finished in 0.000239 seconds.
+
+    1 tests, 2 assertions, 0 failures, 0 errors
+
+!SLIDE
+
+### Ciekawszy przypadek ###
+
+    @@@Ruby
+    require 'lib/average'
+    require 'test/unit'
+
+    class TestAverage < Test::Unit::TestCase
+
+      def test_simple
+        assert_equal 4.5, [4,5].average 
+        assert_equal 3, [2,2,3,5].average 
+      end
+
+      def test_empty_array
+        assert_nil [].average
+      end
+
+    end
+
+!SLIDE
+
+### Rezultat ###
+
+    Loaded suite test/test_average
+    Started
+    F.
+    Finished in 0.00441 seconds.
+
+    1) Failure:
+    test_empty_array(TestAverage) [test/test_average.rb:12]:
+    <nil> expected but was
+    <NaN>.
+
+    2 tests, 3 assertions, 1 failures, 0 errors
+
+!SLIDE
+
+### Pamiętaj cholero, nie dziel przez zero! ###
+    @@@Ruby
+    class Array
+
+      def average
+        sum = 0
+        count = 0
+        each do |element|
+          sum += element
+          count += 1
+        end
+        sum.to_f/count if count != 0
+      end
+
+    end
+!SLIDE
+!SLIDE
 ## [http://rubyeventmachine.com/](http://rubyeventmachine.com/) ##
 
 ## [https://github.com/tjeden/topserver](https://github.com/tjeden/topserver) ##
