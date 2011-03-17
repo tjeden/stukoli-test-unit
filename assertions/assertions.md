@@ -25,7 +25,7 @@
 
 !SLIDE
 
-### Asercje ##
+### Asercje (0/8)##
 
     @@@Ruby
     assert
@@ -55,7 +55,7 @@
 
 !SLIDE
 
-### Asercje ###
+### Asercje (1/8)###
 
     @@@Ruby
     assert 2 > 0                    #=> pass 
@@ -67,7 +67,7 @@
 
 !SLIDE
 
-### Asercje ###
+### Asercje (2/8)###
 
     @@@Ruby
     assert_not_equal(5, 3)          #=> pass  
@@ -79,7 +79,7 @@
 
 !SLIDE
 
-### Asercje ###
+### Asercje (3/8)###
 
     @@@Ruby
     assert_in_delta(5, 4, 0.5)      #=> fail
@@ -87,7 +87,7 @@
 
 !SLIDE
 
-### Asercje ###
+### Asercje (4/8)###
 
     @@@Ruby
     assert_nothing_raised Array.new #=> pass
@@ -101,7 +101,7 @@
 
 !SLIDE
 
-### Asercje ###
+### Asercje (5/8)###
 
     @@@Ruby
     cat = Cat.new
@@ -112,7 +112,7 @@
 
 !SLIDE
 
-### Asercje ###
+### Asercje (6/8)###
 
     @@@Ruby
     assert_no_math('02-770', /dd-ddd/) #=> fail
@@ -123,11 +123,23 @@
 
 !SLIDE
 
-### Asercje ###
+### Asercje (7/8)###
 
     @@@Ruby
-    assert_throws
+    assert_throws :done do            #=> pass
+      throw :done
+    end
 
-    assert_send
+    assert_throws :done do            #=> fail
+      throw :other_symbol
+    end
 
-    flunk
+!SLIDE
+
+### Asercje (8/8)###
+
+    @@@Ruby
+    assert_send [[1, 2], :include?, 4] #=> fail
+    assert_send [[1, 2], :include?, 2] #=> true
+
+    flunk                              #=> fail (zawsze oblany)
