@@ -1,0 +1,656 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Presentation</title>
+
+  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/showoff.css" type="text/css"/>
+
+  <script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src="./js/jquery-print.js"></script>
+  <script type="text/javascript" src="./js/jquery.batchImageLoad.js"></script>
+
+  <script type="text/javascript" src="./js/jquery.doubletap-0.1.js"></script>
+
+  <script type="text/javascript" src="./js/fg.menu.js"></script>
+  <script type="text/javascript" src="./js/showoff.js"></script>
+  <script type="text/javascript" src="./js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src="./js/sh_main.min.js"></script>
+  <script type="text/javascript" src="./js/core.js"></script>
+  <script type="text/javascript" src="./js/showoffcore.js"></script>
+
+  <link type="text/css" href="./css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/sh_style.css" rel="stylesheet" >
+
+  
+    <link rel="stylesheet" href="file/simple.css" type="text/css"/>
+  
+
+  
+
+  <script type="text/javascript">
+  $(function(){
+    setupPreso(false, './');
+  });
+  </script>
+</head>
+
+<body>
+
+
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
+
+<div id="help">
+  <table>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">&larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">d</td><td>debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">z</td><td>toggle help (this)</td></tr>
+  </table>
+</div>
+
+<div id="preso">loading presentation...</div>
+<div id="footer">
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div class="slide" data-transition="none"><div class="content" ref="cover/cover">
+<h1>Test/Unit</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="about/about">
+<h1>Aleksander D&#x105;browski</h1>
+
+<h1>(tjeden)</h1>
+
+<h1><a href="http://rubysfera.pl">http://rubysfera.pl</a></h1>
+
+<p><a href="https://github.com/tjeden">https://github.com/tjeden</a></p>
+
+<p><a href="http://tjeden.blip.pl/">http://tjeden.blip.pl/</a></p></div>
+</div><div class="slide" data-transition="none"><div class="content incremental center" ref="theory/theory/1">
+<ul>
+<li>Kto z was pisa&#x142; kiedy&#x15B; testy?</li>
+<li>Kto wie co to jest TDD?</li>
+<li>Kto z was programowa&#x142; z u&#x17C;yciem TDD?</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental" ref="theory/theory/2">
+<h2>B&#x119;dzie o:</h2>
+
+<ul>
+<li>Testowaniu jednostkowym</li>
+<li>Technice TDD</li>
+<li>Bibliotece Test/Unit</li>
+<li>(62 slajdy)</li>
+<li>(oraz troch&#x119; programowania)</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental center" ref="theory/theory/3">
+<h2>"Dobry programista, wie czy napisa&#x142; dobry kod.</h2>
+
+<h2>Po co pisa&#x107; testy?"</h2></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="theory/theory/4">
+<h2>Dziesi&#x119;&#x107; <strike>przykaza&#x144;</strike> przyk&#x142;ad&#xF3;w</h2></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="theory/theory/5">
+<p>I. Ruby to j&#x119;zyk interpretowany</p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="theory/theory/6">
+<p>II. Nikt nie jest idealny</p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="theory/theory/7">
+<p>III. Szybkie wy&#x142;apywanie b&#x142;&#x119;d&#xF3;w</p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="theory/theory/8">
+<p>IV. Pami&#x119;&#x107; jest zawodna</p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="theory/theory/9">
+<p>V. Testy dokumentuj&#x105; kod</p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="theory/theory/10">
+<p>VI. &#x141;atwy refaktoring i zmiany</p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="theory/theory/11">
+<p>VII. Uproszczenie testowania (automatyczne)</p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="theory/theory/12">
+<p>VIII. Wy&#x142;apywanie regresji</p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="theory/theory/13">
+<p>IX. Lepszy design kodu</p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="theory/theory/14">
+<p>X. Test Driven Development</p></div>
+</div><div class="slide" data-transition="none"><div class="content incremental bullets center" ref="theory/theory/15">
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental" ref="tdd/tdd">
+<h1>TDD</h1>
+
+<ul>
+<li>Najpierw napisz test, kt&#xF3;ry nie przejdzie</li>
+<li>Napisz kod, kt&#xF3;ry przechodzi test</li>
+<li>Zrefaktoryzuj kod</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/1">
+<h2>Czym s&#x105; testy?</h2>
+
+<pre class="sh_Ruby"><code>require 'average'
+
+fail 'oczekiwane 4.5' if [4,5].average != 4.5
+fail 'oczekiwane 3' if [2,2,3,5].average != 3</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content incremental" ref="story/story/2">
+<h2>Co daje Test::Unit?</h2>
+
+<ul>
+<li>Pozwala opisywa&#x107; testy</li>
+<li>Pozwala tworzy&#x107; struktury test&#xF3;w</li>
+<li>Dostarcza sposob&#xF3;w wywo&#x142;ywania test&#xF3;w</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/3">
+<h2>Suche prezentacje s&#x105; nudne</h2>
+
+<pre><code>git clone git@github.com:tjeden/stukoli-test-unit.git
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/4">
+<h3>Przygotowujemy test</h3>
+
+<pre class="sh_Ruby"><code>require 'lib/average'
+require 'test/unit'
+
+class TestAverage &lt; Test::Unit::TestCase
+
+  def test_simple
+    assert_equal '4,5', [4,5].average 
+    assert_equal '3', [2,2,3,5].average 
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/5">
+<h3>Wywo&#x142;anie</h3>
+
+<pre><code>ruby test/test_average.rb
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/6">
+<h3>Rezultat</h3>
+
+<pre><code>Loaded suite test/test_average
+Started
+E
+Finished in 0.000278 seconds.
+
+  1) Error:
+test_simple(TestAverage):
+NoMethodError: undefined method `average' for [4, 5]:Array
+    test/test_average.rb:5:in `test_simple'
+
+1 tests, 0 assertions, 0 failures, 1 errors
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/7">
+<h3>Dodanie metody average</h3>
+
+<pre class="sh_Ruby"><code>class Array
+
+  def average;
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/8">
+<h3>Rezultat</h3>
+
+<pre><code>Loaded suite test/test_average
+Started
+F
+Finished in 0.024466 seconds.
+
+  1) Failure:
+test_simple(TestAverage) [test/test_average.rb:6]:
+&lt;"4,5"&gt; expected but was
+&lt;nil&gt;.
+
+1 tests, 1 assertions, 1 failures, 0 errors
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/9">
+<h3>Implementacja &#x15B;redniej (poprawna?)</h3>
+
+<pre class="sh_Ruby"><code>class Array
+
+  def average
+    sum = 0
+    count = 0
+    self.each do |element|
+      sum += element
+      count += 1
+    end
+    sum/count
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/10">
+<h3>Rezultat</h3>
+
+<pre><code>Loaded suite test/test_average
+Started
+F
+Finished in 0.004176 seconds.
+
+1) Failure:
+test_simple(TestAverage) [test/test_average.rb:7]:
+&lt;"4,5"&gt; expected but was
+&lt;4&gt;.
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/11">
+<h3>Uwzgl&#x119;dnienie poprawki</h3>
+
+<pre class="sh_Ruby"><code>class Array
+
+  def average
+    sum = 0
+    count = 0
+    self.each do |element|
+      sum += element
+      count += 1
+    end
+    sum.to_f/count
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/12">
+<h3>Rezultat</h3>
+
+<pre><code>Loaded suite test/test_average
+Started
+F
+Finished in 0.004232 seconds.
+
+1) Failure:
+test_simple(TestAverage) [test/test_average.rb:7]:
+&lt;"4,5"&gt; expected but was
+&lt;4.5&gt;.
+
+1 tests, 1 assertions, 1 failures, 0 errors
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/13">
+<h3>Test jest do poprawienia</h3>
+
+<pre class="sh_Ruby"><code>require 'lib/average'
+require 'test/unit'
+
+class TestAverage &lt; Test::Unit::TestCase
+
+  def test_simple
+    assert_equal 4.5, [4,5].average 
+    assert_equal 3, [2,2,3,5].average 
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/14">
+<h3>Rezultat</h3>
+
+<pre><code>Loaded suite test/test_average
+Started
+.
+Finished in 0.000239 seconds.
+
+1 tests, 2 assertions, 0 failures, 0 errors
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/15">
+<h3>Ciekawszy przypadek</h3>
+
+<pre class="sh_Ruby"><code>require 'lib/average'
+require 'test/unit'
+
+class TestAverage &lt; Test::Unit::TestCase
+
+  def test_simple
+    assert_equal 4.5, [4,5].average 
+    assert_equal 3, [2,2,3,5].average 
+  end
+
+  def test_empty_array
+    assert_nil [].average
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/16">
+<h3>Rezultat</h3>
+
+<pre><code>Loaded suite test/test_average
+Started
+F.
+Finished in 0.00441 seconds.
+
+1) Failure:
+test_empty_array(TestAverage) [test/test_average.rb:12]:
+&lt;nil&gt; expected but was
+&lt;NaN&gt;.
+
+2 tests, 3 assertions, 1 failures, 0 errors
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/17">
+<h3>Pami&#x119;taj cholero, nie dziel przez zero!</h3>
+
+<pre class="sh_Ruby"><code>class Array
+
+  def average
+    sum = 0
+    count = 0
+    each do |element|
+      sum += element
+      count += 1
+    end
+    sum.to_f/count if count != 0
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/18">
+<h3>Rezultat</h3>
+
+<pre><code>Loaded suite test/test_average
+Started
+..
+Finished in 0.000383 seconds.
+
+2 tests, 3 assertions, 0 failures, 0 errors
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/19">
+<h3>Refactoring?</h3>
+
+<pre class="sh_Ruby"><code>class Array
+
+  def average
+    sum = 0
+    count = 0
+    each do |element|
+      sum += element
+      count += 1
+    end
+    sum.to_f/count if count != 0
+  end
+
+end
+
+class Array
+
+  def average
+    sum = 0
+    each do |element|
+      sum += element
+    end
+    sum.to_f/size unless size == 0
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/20">
+<h3>Rezultat</h3>
+
+<pre><code>Loaded suite test/test_average
+Started
+..
+Finished in 0.000383 seconds.
+
+2 tests, 3 assertions, 0 failures, 0 errors
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/21">
+<h3>Czy mo&#x17C;na to jeszcze skr&#xF3;ci&#x107;?</h3>
+
+<pre class="sh_Ruby"><code>class Array
+
+  def average
+    sum = 0
+    each do |element|
+      sum += element
+    end
+    sum.to_f/size unless size == 0
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/22">
+<h3>Czy mo&#x17C;na to jeszcze skr&#xF3;ci&#x107;?</h3>
+
+<pre class="sh_Ruby"><code>class Array
+
+  def average
+    inject{ |sum, element| sum + element }.to_f / size unless size == 0
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/23">
+<h3>Rezultat</h3>
+
+<pre><code>Loaded suite test/test_average
+Started
+..
+Finished in 0.000383 seconds.
+
+2 tests, 3 assertions, 0 failures, 0 errors
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/24">
+<h3>Jeszcze bardziej?</h3>
+
+<pre class="sh_Ruby"><code>class Array
+
+  def average
+    inject{ |sum, element| sum + element }.to_f / size unless size == 0
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/25">
+<h3>Jeszcze bardziej?</h3>
+
+<pre class="sh_Ruby"><code>class Array
+
+  def average
+    inject(:+).to_f / size unless size == 0
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="story/story/26">
+<h3>Rezultat</h3>
+
+<pre><code>Loaded suite test/test_average
+Started
+..
+Finished in 0.000312 seconds.
+
+2 tests, 3 assertions, 0 failures, 0 errors
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content incremental" ref="tdd/tdd">
+<h1>TDD</h1>
+
+<ul>
+<li>Najpierw napisz test, kt&#xF3;ry nie przejdzie</li>
+<li>Napisz kod, kt&#xF3;ry przechodzi test</li>
+<li>Zrefaktoryzuj kod</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="assertions/assertions/1">
+<h3>Struktura test&#xF3;w</h3>
+
+<pre class="sh_Ruby"><code>require 'lib/average'
+require 'test/unit'
+
+class TestAverage &lt; Test::Unit::TestCase
+
+  def test_simple
+    assert_equal 4.5, [4,5].average 
+    assert_equal 3, [2,2,3,5].average 
+  end
+
+  def test_empty_array
+    assert_nil [].average
+  end
+
+  def helper_metod
+    #never goes here
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="assertions/assertions/2">
+<h3>Asercje (0/8)</h3>
+
+<pre class="sh_Ruby"><code>assert
+assert_nil
+assert_not_nil
+
+assert_not_equal
+assert_equal
+assert_in_delta
+
+assert_nothing_raised
+assert_raise
+assert_instance_of
+assert_kind_of
+assert_respond_to
+
+assert_no_math
+assert_match
+assert_same
+assert_not_same
+
+assert_operator
+assert_throws
+assert_send
+
+flunk</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="assertions/assertions/3">
+<h3>Asercje (1/8)</h3>
+
+<pre class="sh_Ruby"><code>assert 2 &gt; 0                    #=&gt; pass 
+assert 0 &gt; 2                    #=&gt; fail
+
+assert_nil nil                  #=&gt; pass
+assert_nil Cat.new              #=&gt; fail
+assert_not_nil Cat.new          #=&gt; pass</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="assertions/assertions/4">
+<h3>Asercje (2/8)</h3>
+
+<pre class="sh_Ruby"><code>assert_not_equal(5, 3)          #=&gt; pass  
+assert_equal(5, 3)              #=&gt; fail
+
+assert_equal(5, 5.0)            #=&gt; pass  (z u&#x17C;yciem == )
+assert_same(5, 5.0)             #=&gt; fail (z u&#x17C;yciem eql?)
+assert_not_same(5, 5.0)         #=&gt; pass</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="assertions/assertions/5">
+<h3>Asercje (3/8)</h3>
+
+<pre class="sh_Ruby"><code>assert_in_delta(5, 4, 0.5)      #=&gt; fail
+assert_in_delta(5, 4, 2.5)      #=&gt; pass</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="assertions/assertions/6">
+<h3>Asercje (4/8)</h3>
+
+<pre class="sh_Ruby"><code>assert_nothing_raised Array.new #=&gt; pass
+assert_raise Array.ugabuga      #=&gt; pass
+
+a = Array.new
+
+assert_instance_of(Array, a)    #=&gt; pass
+assert_kind_of(Object, a)       #=&gt; pass
+assert_kind_of(Cat, a)          #=&gt; fail</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="assertions/assertions/7">
+<h3>Asercje (5/8)</h3>
+
+<pre class="sh_Ruby"><code>cat = Cat.new
+assert_respond_to(cat, :meow)   #=&gt; pass
+
+dog = Dog.new
+assert_respond_to(dog, :meow)   #=&gt; fail</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="assertions/assertions/8">
+<h3>Asercje (6/8)</h3>
+
+<pre class="sh_Ruby"><code>assert_no_math('02-770', /dd-ddd/) #=&gt; fail
+assert_math('02-770', /dd-ddd/)    #=&gt; pass
+
+assert_operator 5, :&gt;, 4           #=&gt; pass
+assert_operator 2, :&gt;=, 2          #=&gt; pass</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="assertions/assertions/9">
+<h3>Asercje (7/8)</h3>
+
+<pre class="sh_Ruby"><code>assert_throws :done do            #=&gt; pass
+  throw :done
+end
+
+assert_throws :done do            #=&gt; fail
+  throw :other_symbol
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="assertions/assertions/10">
+<h3>Asercje (8/8)</h3>
+
+<pre class="sh_Ruby"><code>assert_send [[1, 2], :include?, 4] #=&gt; fail
+assert_send [[1, 2], :include?, 2] #=&gt; true
+
+flunk                              #=&gt; fail (zawsze oblany)</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="tips/tips/1">
+<h2>Setup &amp;&amp; Teardown</h2>
+
+<pre class="sh_Ruby"><code>require "test/unit"
+
+class TestSimpleNumber &lt; Test::Unit::TestCase
+
+  def setup
+    @num = SimpleNumber.new(2)
+  end
+
+  def teardown
+    @num.delete
+  end
+
+  def test_simple
+    assert_equal(4, @num.add(2) )
+  end
+
+  def test_simple2
+    assert_equal(4, @num.multiply(2) )
+  end
+
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="tips/tips/2">
+<h2>Uruchamianie wybranego testu</h2>
+
+<pre><code>ruby test/test_average.rb --name test_empty_array
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content incremental center" ref="tips/tips/3">
+<h2>Alternatywy (4?):</h2>
+
+<ul>
+<li>Rspec</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental" ref="tips/tips/4">
+<h2>Czy to jest u&#x17C;yteczne?</h2>
+
+<ul>
+<li>Tak. Ja korzystam.</li>
+<li>Testowanie logiki.</li>
+<li>Symulowanie dzia&#x142;a&#x144; u&#x17C;ytkownika.</li>
+<li>Symulowanie przegl&#x105;darki (capybara, selenium).</li>
+<li>Co dusza zapragnie...</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="tips/tips/5">
+<h1>Ruby &#x2665; Tests</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="fin/fin/1">
+<h2>Presentation.self</h2>
+
+<p><a href="http://test-unit.heroku.com">http://test-unit.heroku.com</a>
+<a href="https://github.com/tjeden/stukoli-test-unit">https://github.com/tjeden/stukoli-test-unit</a>
+<a href="https://github.com/tjeden/stukoli-example">https://github.com/tjeden/stukoli-example</a></p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="fin/fin/2">
+<h2>Materia&#x142;y</h2>
+
+<p><a href="http://en.wikibooks.org/wiki/Ruby_Programming/Unit_testing">http://en.wikibooks.org/wiki/Ruby<em>Programming/Unit</em>testing</a></p>
+
+<pre><code>http://en.wikibooks.org/wiki/Ruby_Programming/Unit_testing) 
+</code></pre>
+
+<p><a href="http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/">http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/</a>
+<a href="http://rspec.info/">http://rspec.info/</a></p>
+
+<p><a href="http://rubysfera.pl">http://rubysfera.pl</a></p></div>
+</div>
+</div>
+
+</body>
+</html>

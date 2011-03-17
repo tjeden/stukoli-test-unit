@@ -1,7 +1,7 @@
 !SLIDE 
 
 ## Presentation.self ##
-[http://test-unit.heroku.com](https://test-unit.heroku.com)
+[http://test-unit.heroku.com](http://test-unit.heroku.com)
 [https://github.com/tjeden/stukoli-test-unit](https://github.com/tjeden/stukoli-test-unit)
 [https://github.com/tjeden/stukoli-example](https://github.com/tjeden/stukoli-example)
 
